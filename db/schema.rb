@@ -15,15 +15,27 @@ ActiveRecord::Schema.define(version: 20171021133145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "communities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "datasets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
     t.string "name"
     t.string "documentation"
+    t.boolean "private"
     t.datetime "date_published"
     t.datetime "last_updated"
     t.float "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "datafile"
+    t.index ["community_id"], name: "index_datasets_on_community_id"
+    t.index ["user_id"], name: "index_datasets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +47,6 @@ ActiveRecord::Schema.define(version: 20171021133145) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "datasets", "communities"
+  add_foreign_key "datasets", "users"
 end

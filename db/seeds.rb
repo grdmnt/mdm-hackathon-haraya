@@ -6,10 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'sample user', email: "user@example.com", password: "password")
+u = User.create(name: 'sample user', email: "user@example.com", password: "password")
 
-d = Dataset.new(name: 'test dataset', documentation: 'nothing to see here')
+c = Community.create(name: 'sample-1community', description: 'test community')
+
+d = Dataset.new(user: u, community: c, name: 'test dataset', documentation: 'nothing to see here')
 File.open('test.csv') do |f|
+  d.datafile = f
+end
+d.save!
+
+d = Dataset.new(user: u, community: c, name: 'another test set', documentation: 'another useless csv')
+File.open('csv.csv') do |f|
   d.datafile = f
 end
 d.save!
