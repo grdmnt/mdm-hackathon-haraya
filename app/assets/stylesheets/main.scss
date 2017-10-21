@@ -45,9 +45,6 @@ body {
 }
 
 #explore {
-    .featured {
-
-    }
     margin-top: -8px;
     h2 {
         font-size: 40px;
@@ -58,15 +55,16 @@ body {
     }
 
     .card {
-        height: 150px;
-        &.featured {
-            height: 220px;
-        }
+        // min-height: 150px;
     }
 
     .ui.search {
         margin-bottom: 24px;
         font-size: 16px;
+    }
+
+    .category {
+        margin-top: 0px;
     }
 
     // .cards {
