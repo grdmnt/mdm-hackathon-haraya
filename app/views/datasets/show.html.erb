@@ -1,29 +1,50 @@
+<div class="ui basic segment" id="dataset">
+    <div class="ui breadcrumb">
+        <%= link_to @dataset.community.name, @dataset.community, class: 'section' %>
+        <i class="right angle icon divider"></i>
+        <div class="active section"><%= @dataset.name %></div>
+    </div>
+    <div class="ui divider"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dataset.name %>
-</p>
- 
-<p>
-  <strong>Documentation:</strong>
-  <%= @dataset.documentation %>
-</p>
+    <h2 class="ui header"><%= @dataset.name %> 
+        <% if @dataset.private %>
+        <span><i class="icon lock"></i></span>
+        <% end %>
+        <div class="sub header">Author: <%= @dataset.user.name %></div>
+        <div class="sub header">Date published: <%= @dataset.created_at %></div>
+        <div class="sub header">Last updated: <%= @dataset.updated_at %></div>
+    </h2>
 
-<p>
-  <strong>Private:</strong>
-  <%= @dataset.private %>
-</p>
+    <%= link_to @dataset.datafile.url, :class => 'ui button green mini' do %>
+    <i class="icon download"></i> Download CSV File
+    <% end %>
+    <% if current_user.datasets.include?(@dataset) %>
+    <%= link_to edit_dataset_path(@dataset), :class => 'ui button blue mini' do %>
+    <i class="icon write"></i> Update Dataset
+    <% end %>
+    <% end %>
+    <div class="ui message">
+        <p><%= @dataset[:documentation].html_safe %></p>
+    </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @dataset.user.name %>
-</p>
+    <div id="disqus_thread"></div>
+<script>
 
-<p>
-  <strong>Community:</strong>
-  <%= @dataset.community.name %>
-</p>
- 
-<%= link_to "Download", @dataset.datafile.url %> |
-<%= link_to 'Edit', edit_dataset_path(@dataset) %> |
-<%= link_to 'Back', datasets_path %>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://datum-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>

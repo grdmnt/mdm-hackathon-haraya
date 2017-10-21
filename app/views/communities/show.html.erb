@@ -1,0 +1,28 @@
+<div class="ui grid" id="community-page">
+    <div class="row">
+        <div class="sixteen wide column">
+            <h5 class="ui header"><%= @community.name %></h5>
+            <div class="ui divider"></div>
+            <div class="ui message">
+                <%= @community.description %>
+            </div>
+            <div class="ui secondary pointing two item menu">
+                <%= link_to('Datasets', @community, class: 'active item') %>  
+				<%= link_to('Members', community_members_path(@community), class: 'item') %>  
+
+            </div>
+
+			<% @community.datasets.each do |dataset| %>
+            <%= link_to dataset, :class => 'ui card fluid' do %>
+                <div class="content">
+			    	<div href='#' class="header"><%= dataset.name %></div>
+			    	<div class="meta">by <%= dataset.user.name %></div>
+			    	<div class="description">
+			        	<%= dataset.documentation %>
+			    	</div>
+			    </div>
+            <%end %>
+			<% end %>
+        </div>
+    </div>
+</div>

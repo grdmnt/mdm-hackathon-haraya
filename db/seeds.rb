@@ -16,14 +16,13 @@ u.memberships.create(community: c)
 u.memberships.create(community: c2)
 c2.memberships.create(user: u2)
 
-
-d = Dataset.new(user: u, community: c, name: 'test dataset', documentation: 'nothing to see here')
+d = Dataset.new(user: u, community: c, name: 'test dataset', documentation: 'nothing to see here', private: true)
 File.open('test.csv') do |f|
   d.datafile = f
 end
 d.save!
 
-d = Dataset.new(user: u, community: c, name: 'another test set', documentation: 'another useless csv')
+d = Dataset.new(user: u, community: c, name: 'another test set', documentation: 'another useless csv', private: false)
 File.open('csv.csv') do |f|
   d.datafile = f
 end

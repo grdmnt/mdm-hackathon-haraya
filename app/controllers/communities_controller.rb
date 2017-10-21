@@ -6,6 +6,10 @@ class CommunitiesController < ApplicationController
   def show
     @community = Community.find_by(name: params[:identifier])
   end
+
+  def members
+    @community = Community.find_by(name: params[:identifier])
+  end
  
   def new
     @community = Community.new

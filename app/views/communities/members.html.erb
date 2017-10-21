@@ -1,0 +1,34 @@
+<div class="ui grid" id="community-page">
+    <div class="row">
+        <div class="sixteen wide column">
+            <h5 class="ui header"><%= @community.name %></h5>
+            <div class="ui divider"></div>
+            <div class="ui message">
+                <%= @community.description %>
+            </div>
+            <div class="ui secondary pointing two item menu">
+                <%= link_to('Datasets', @community, class: 'item') %>  
+                <%= link_to('Members', community_members_path(@community), class: 'active item') %>  
+
+            </div>
+
+			  <div class="ui grid">
+
+              <% @community.users.each do |user| %>
+        <div class="one wide column"></div>
+        <div class="four wide column">
+            <div class="segment">
+                <div class="content">
+                    <img class="left floated mini ui image" src="https://api.adorable.io/avatars/285/user.png" style="margin-top: 5px;">
+                    <div class="header">
+                    <b><%= user.name %></b>
+                    </div>
+                    <div class="meta">
+                        <%= user.email %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

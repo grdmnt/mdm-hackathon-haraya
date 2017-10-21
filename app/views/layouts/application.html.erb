@@ -11,10 +11,8 @@
 
     <%= render 'shared/navbar' %>
     <div class="break"></div>
-     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="ui grid container">
-      <% if true %>
+      <% if user_signed_in? %>
         <div class="three wide column">
             <%= render 'shared/sidebar' %>
         </div>
@@ -27,6 +25,14 @@
         </div>
       <% end %>
     </div>  
-    
+    <script>
+      $(document).ready(function(){
+          $('.ui.dropdown').dropdown();
+
+          $('.ui.checkbox')
+          .checkbox()
+        ;
+      });
+    </script>
   </body>
 </html>

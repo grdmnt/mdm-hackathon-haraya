@@ -1,31 +1,39 @@
 <div class="ui fixed menu borderless" id="navbar">
     <div class="ui container">
-        <a href="#" class="item">
+        <%= link_to root_path, :class => 'item' do%>
             <img src="<%= asset_url('logo.png') %>" alt="logo">
-        </a>
-        <a href="#" class="item">Datasets</a>
+        <% end %>
+        <%# <a href="#" class="item">Datasets</a> %>
         <div class="right menu">
-            <% if true %>
+            <% if not user_signed_in? %>
             <div class="item">
-                <div class="ui input">
-                    <input type="email" placeholder="Email">
+                <%= form_for(@user, :url => session_path(@user), :html => {class: "ui form", id: "login"}) do |f| %>
+                <div class="fields">
+                    <div class="field">
+                        <div class="ui input">
+                            <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui input">
+                            <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <%= f.submit "Login", class: "ui button primary", id: "login_button" %>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="ui input">
-                    <input type="password" placeholder="Password">
-                </div>
-            </div>
-            <div class="item">
-                <button class="ui button primary">Login</button>
+                <% end %>
             </div>
             <% else %>
-            <div class="item"><button class="ui button primary small"><i class="icon upload"></i>Upload Dataset</button></div>
+            <%= link_to new_dataset_path, :class => 'item' do%>
+            <button class="ui button primary small"><i class="icon upload"></i>Upload Dataset</button>
+            <% end %>
             <div class="ui dropdown item">
                 <img class="ui avatar image" src="https://api.adorable.io/avatars/285/user.png">
-                <span> Je Marie <i class="icon down angle down"></i></span>
+                <span> <%= current_user.name %> <i class="icon down angle down"></i></span>
                 <div class="menu">
-                <a class="item">Logout</a>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item', id: 'logout_button') %>  
                 </div>
             </div>
             <% end %>

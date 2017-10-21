@@ -7,7 +7,7 @@
     <div class="ui divider"></div>
 
     <h2 class="ui header"><%= @dataset[:name] %> 
-        <% if true %>
+        <% if @dataset.private %>
         <span><i class="icon lock"></i></span>
         <% end %>
         <div class="sub header">Author: <%= @dataset[:author] %></div>
