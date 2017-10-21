@@ -6,11 +6,18 @@
     </div>
     <div class="ui divider"></div>
 
-    <h2 class="ui header"><%= @dataset[:name] %>
+    <h2 class="ui header"><%= @dataset[:name] %> 
+        <% if true %>
+        <span><i class="icon lock"></i></span>
+        <% end %>
+        <div class="sub header">Author: <%= @dataset[:author] %></div>
         <div class="sub header">Date published: <%= @dataset[:date_published] %></div>
         <div class="sub header">Last updated: <%= @dataset[:date_published] %></div>
     </h2>
     <button class="ui button green mini"><i class="icon download"></i> Download CSV File</button>
+    <% if true %>
+    <button class="ui button blue mini"><i class="icon write"></i> Update Dataset</button>
+    <% end %>
     <div class="ui message">
         <p><%= @dataset[:documentation].html_safe %></p>
     </div>
