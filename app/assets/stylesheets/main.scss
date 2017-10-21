@@ -54,8 +54,13 @@ body {
         padding-bottom: 0;
     }
 
-    .card {
-        // min-height: 150px;
+    .content {
+        position: relative;
+        .footer {
+            // min-height: 150px;
+            position: absolute;
+            bottom: 2px;
+        }
     }
 
     .ui.search {
