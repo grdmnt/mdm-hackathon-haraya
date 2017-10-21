@@ -17,8 +17,6 @@ class CommunitiesController < ApplicationController
  
   def create
     @community = Community.new(community_params)
-    community = Community.find_by_name(params[:community_name])
-    @community.community = community
 
     if current_user
       @community.user = current_user
@@ -35,8 +33,6 @@ class CommunitiesController < ApplicationController
  
   def update
     @community = Community.find_by(name: params[:identifier])
-    community = Community.find_by_name(params[:community_name])
-    @community.community = community
  
     if @community.update(community_params)
       redirect_to @community
