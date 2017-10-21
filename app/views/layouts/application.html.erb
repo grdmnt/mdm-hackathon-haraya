@@ -9,7 +9,23 @@
   </head>
 
   <body>
-    <script src="https://unpkg.com/vue"></script>
-    <%= yield %>
+
+    <%= render 'shared/navbar' %>
+    <div class="break"></div>
+    <div class="ui grid container">
+      <% if true %>
+        <div class="three wide column">
+            <%= render 'shared/sidebar' %>
+        </div>
+        <div class="thirteen wide column">
+            <%= yield %>
+        </div>
+      <% else %>
+        <div class="sixteen wide column">
+            <%= yield %>
+        </div>
+      <% end %>
+    </div>  
+    
   </body>
 </html>

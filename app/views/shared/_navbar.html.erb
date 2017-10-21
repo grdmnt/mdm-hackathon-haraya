@@ -2,8 +2,8 @@
     <div class="ui container">
         <a href="#" class="item">Logo</a>
         <a href="#" class="item">Datasets</a>
-
         <div class="right menu">
+            <% if false %>
             <div class="item">
                 <div class="ui transparent input">
                     <input type="email" placeholder="Email">
@@ -17,6 +17,16 @@
             <div class="item">
                 <button class="ui button primary">Login</button>
             </div>
+            <% else %>
+            <div class="item"><button class="ui button primary small"><i class="icon upload"></i>Upload Dataset</button></div>
+            <div class="ui dropdown item">
+                <img class="ui avatar image" src="https://api.adorable.io/avatars/285/user.png">
+                <span> Je Marie <i class="icon down angle down"></i></span>
+                <div class="menu">
+                <a class="item">Logout</a>
+                </div>
+            </div>
+            <% end %>
         </div>
     </div>
 </div>
