@@ -1,0 +1,13 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @dataset.name %>
+</p>
+ 
+<p>
+  <strong>Documentation:</strong>
+  <%= @dataset.documentation %>
+</p>
+ 
+<%= link_to 'Edit', edit_dataset_path(@dataset) %> |
+<%= link_to 'Back', datasets_path %>

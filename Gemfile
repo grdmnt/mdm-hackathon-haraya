@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise', '~> 4.3'
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
