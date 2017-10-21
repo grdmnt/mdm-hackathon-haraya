@@ -1,0 +1,34 @@
+<div class="ui basic segment" id="new-dataset">
+    <h2 class="ui header">Update Dataset</h2>
+    <div class="ui divider"></div>
+    <form action="post" class="ui form">
+        <div class="field disabled">
+            <label>Community</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="community">
+                <i class="dropdown icon"></i>
+                <div class="default text">TransparencyPH</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>Name of Dataset:</label>
+            <input type="text" name="name" placeholder="Name of Dataset">
+        </div>
+        <div class="field">
+            <label>Documentation:</label>
+            <textarea></textarea>
+            <h6 class="ui header">*Markdown is supported</h6>
+        </div>
+        <div class="field">
+            <div class="ui toggle checkbox">
+                <label>Make Dataset Private</label>
+                <input type="checkbox" name="private" tabindex="0" class="hidden">
+            </div>
+        </div>
+        <div class="field">
+            <label>Upload CSV File:</label>
+            <input type="file" name="csv">
+        </div>
+        <button class="ui button primary">Update Dataset</button>
+    </form>
+</div>

@@ -15,6 +15,9 @@ class StaticPagesController < ApplicationController
   def new_dataset
   end
 
+  def update_dataset
+  end
+
   def new_community
   end
 
