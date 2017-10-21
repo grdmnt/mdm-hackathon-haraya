@@ -28,10 +28,12 @@ body {
 }
 
 #explore {
+    .featured {
+
+    }
     margin-top: -8px;
     h2 {
         font-size: 40px;
-        margin-bottom: 8px;
     }
 
     .column {
@@ -40,6 +42,9 @@ body {
 
     .card {
         height: 150px;
+        &.featured {
+            height: 220px;
+        }
     }
 
     .ui.search {
@@ -47,9 +52,9 @@ body {
         font-size: 16px;
     }
 
-    .cards {
-        margin-top: -24px;
-    }
+    // .cards {
+    //     margin-top: -24px;
+    // }
 }
 
 .ui.grid.middle.aligned {
