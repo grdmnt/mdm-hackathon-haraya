@@ -1,0 +1,27 @@
+<div class="ui basic segment" id="new-dataset">
+    <div class="ui breadcrumb">
+        <a class="section">Community</a>
+        <i class="right angle icon divider"></i>
+        <div class="active section">Upload Dataset</div>
+    </div>
+    <div class="ui divider"></div>
+
+    <h2 class="ui header">Upload Dataset</h2>
+    <form action="post" class="ui form">
+
+        <div class="field">
+            <label>Name of Dataset:</label>
+            <input type="text" name="name" placeholder="Name of Dataset">
+        </div>
+        <div class="field">
+            <label>Documentation:</label>
+            <textarea></textarea>
+            <h6 class="ui header">*Markdown is supported</h6>
+        </div>
+        <div class="field">
+            <label>Upload CSV File:</label>
+            <input type="file" name="csv">
+        </div>
+        <button class="ui button primary">Submit Data</button>
+    </form>
+</div>
