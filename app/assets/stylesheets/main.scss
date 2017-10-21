@@ -1,0 +1,13 @@
+$gray-background: #E8EAEE;
+
+body {
+    background-color: $gray-background !important;
+}
+
+#navbar {
+    margin-top: 0;
+}
+
+.ui.grid.middle.aligned {
+    height: 100vh;
+}
