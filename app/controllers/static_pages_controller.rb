@@ -5,4 +5,7 @@ class StaticPagesController < ApplicationController
   def dashboard
     @communities = ['transparencyPH', 'agriculture', 'medical-missions']
   end
+
+  def dataset
+  end
 end
