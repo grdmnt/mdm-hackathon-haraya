@@ -8,7 +8,6 @@
 
     <h2 class="ui header">Upload Dataset</h2>
     <form action="post" class="ui form">
-
         <div class="field">
             <label>Name of Dataset:</label>
             <input type="text" name="name" placeholder="Name of Dataset">
@@ -19,9 +18,15 @@
             <h6 class="ui header">*Markdown is supported</h6>
         </div>
         <div class="field">
+            <div class="ui toggle checkbox">
+                <label>Make Dataset Private</label>
+                <input type="checkbox" name="private" tabindex="0" class="hidden">
+            </div>
+        </div>
+        <div class="field">
             <label>Upload CSV File:</label>
             <input type="file" name="csv">
         </div>
-        <button class="ui button primary">Submit Data</button>
+        <button class="ui button primary">Upload Dataset</button>
     </form>
 </div>
