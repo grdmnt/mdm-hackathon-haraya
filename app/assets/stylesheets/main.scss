@@ -6,6 +6,50 @@ body {
 
 #navbar {
     margin-top: 0;
+    z-index: 2;
+    font-size: 16px;
+}
+
+.break {
+    margin-bottom: 80px;
+}
+
+#explore-featured {
+    background-color: #2F343A;
+    margin-top: -5vh; 
+    padding-top: 14vh;
+    z-index: 0;
+    margin-bottom: 32px;
+    padding-bottom: 3vh;
+
+    h2 {
+        color: #fff;
+    }
+}
+
+#explore {
+    margin-top: -8px;
+    h2 {
+        font-size: 40px;
+        margin-bottom: 8px;
+    }
+
+    .column {
+        padding-bottom: 0;
+    }
+
+    .card {
+        height: 150px;
+    }
+
+    .ui.search {
+        margin-bottom: 24px;
+        font-size: 16px;
+    }
+
+    .cards {
+        margin-top: -24px;
+    }
 }
 
 .ui.grid.middle.aligned {
