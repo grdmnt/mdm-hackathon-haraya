@@ -1,13 +1,19 @@
 <div class="ui basic segment" id="new-dataset">
-    <div class="ui breadcrumb">
-        <a class="section">Community</a>
-        <i class="right angle icon divider"></i>
-        <div class="active section">Upload Dataset</div>
-    </div>
-    <div class="ui divider"></div>
-
     <h2 class="ui header">Upload Dataset</h2>
+    <div class="ui divider"></div>
     <form action="post" class="ui form">
+        <div class="field">
+            <label>Community</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="community">
+                <i class="dropdown icon"></i>
+                <div class="default text">Community</div>
+                <div class="menu">
+                    <div class="item" data-value="1">TransparencyPH</div>
+                    <div class="item" data-value="0">medical-missions</div>
+                </div>
+            </div>
+        </div>
         <div class="field">
             <label>Name of Dataset:</label>
             <input type="text" name="name" placeholder="Name of Dataset">
