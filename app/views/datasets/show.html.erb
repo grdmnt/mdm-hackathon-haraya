@@ -9,5 +9,6 @@
   <%= @dataset.documentation %>
 </p>
  
+<%= link_to "Download", @dataset.datafile.url %> |
 <%= link_to 'Edit', edit_dataset_path(@dataset) %> |
 <%= link_to 'Back', datasets_path %>

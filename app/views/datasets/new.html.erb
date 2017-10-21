@@ -1,6 +1,32 @@
 
 <h1>New dataset</h1>
- 
-<%= render 'form' %>
+
+<% if !@dataset.errors.empty? %>
+  <div class="alert alert-error">
+    <ul>
+      <% @dataset.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="well">
+  <%= form_for @dataset, html: { multipart: true } do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :documentation %><br>
+      <%= f.text_field :documentation %>
+    </p>
+    <p>
+      <%= f.label :datafile %><br>
+      <%= f.file_field :datafile %>
+    </p>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
  
 <%= link_to 'Back', datasets_path %>
