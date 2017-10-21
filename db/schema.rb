@@ -10,9 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20171021180746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "communities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "datasets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.string "name"
+    t.string "documentation"
+    t.boolean "private"
+    t.datetime "date_published"
+    t.datetime "last_updated"
+    t.float "version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "datafile"
+    t.index ["community_id"], name: "index_datasets_on_community_id"
+    t.index ["user_id"], name: "index_datasets_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "community_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "datasets", "communities"
+  add_foreign_key "datasets", "users"
 end

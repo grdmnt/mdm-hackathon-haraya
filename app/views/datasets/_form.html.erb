@@ -1,0 +1,49 @@
+<%= form_with model: @dataset, local: true do |form| %>
+ 
+  <% if @dataset.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@dataset.errors.count, "error") %> prohibited
+        this dataset from being saved:
+      </h2>
+      <ul>
+        <% @dataset.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<div class="well">
+  <%= form_for @dataset, html: { multipart: true } do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :documentation %><br>
+      <%= f.text_field :documentation %>
+    </p>
+    <p>
+      <%= f.label :private %><br>
+      <%= f.text_field :private %>
+    </p>
+    <p>
+      <form>
+        Community Name:<br>
+        <input type="text" name="community_name"
+        <% if @dataset.community %>
+          value=<%= @dataset.community.name %>
+        <% end %>
+        ><br>
+      </form>
+    </p>
+    <p>
+      <%= f.label :datafile %><br>
+      <%= f.file_field :datafile %>
+    </p>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
+ 
+<% end %>
