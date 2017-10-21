@@ -17,6 +17,14 @@ class DatasetsController < ApplicationController
  
   def create
     @dataset = Dataset.new(dataset_params)
+    community = Community.find_by_name(params[:community_name])
+    @dataset.community = community
+
+    if current_user
+      @dataset.user = current_user
+    else
+      render redirect_to '/users/sign_in'
+    end
  
     if @dataset.save
       redirect_to @dataset
@@ -27,6 +35,8 @@ class DatasetsController < ApplicationController
  
   def update
     @dataset = Dataset.find(params[:id])
+    community = Community.find_by_name(params[:community_name])
+    @dataset.community = community
  
     if @dataset.update(dataset_params)
       redirect_to @dataset
@@ -44,6 +54,6 @@ class DatasetsController < ApplicationController
  
   private
     def dataset_params
-      params.require(:dataset).permit(:name, :documentation, :datafile)
+      params.require(:dataset).permit(:name, :documentation, :private, :datafile)
     end
 end

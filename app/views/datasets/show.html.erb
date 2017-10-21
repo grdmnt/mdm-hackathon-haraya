@@ -8,6 +8,21 @@
   <strong>Documentation:</strong>
   <%= @dataset.documentation %>
 </p>
+
+<p>
+  <strong>Private:</strong>
+  <%= @dataset.private %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dataset.user.name %>
+</p>
+
+<p>
+  <strong>Community:</strong>
+  <%= @dataset.community.name %>
+</p>
  
 <%= link_to "Download", @dataset.datafile.url %> |
 <%= link_to 'Edit', edit_dataset_path(@dataset) %> |

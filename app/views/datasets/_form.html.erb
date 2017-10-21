@@ -14,23 +14,36 @@
     </div>
   <% end %>
  
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
- 
-  <p>
-    <%= form.label :documentation %><br>
-    <%= form.text_area :documentation %>
-  </p>
-
-  <p>
-    <%= form.label :datafile %><br>
-    <%= form.text_area :datafile %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+<div class="well">
+  <%= form_for @dataset, html: { multipart: true } do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :documentation %><br>
+      <%= f.text_field :documentation %>
+    </p>
+    <p>
+      <%= f.label :private %><br>
+      <%= f.text_field :private %>
+    </p>
+    <p>
+      <form>
+        Community Name:<br>
+        <input type="text" name="community_name"
+        <% if @dataset.community %>
+          value=<%= @dataset.community.name %>
+        <% end %>
+        ><br>
+      </form>
+    </p>
+    <p>
+      <%= f.label :datafile %><br>
+      <%= f.file_field :datafile %>
+    </p>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
  
 <% end %>

@@ -7,8 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 u = User.create(name: 'sample user', email: "user@example.com", password: "password")
+u2 = User.create(name: 'sample user 2', email: "user2@example.com", password: "password")
 
-c = Community.create(name: 'sample-1community', description: 'test community')
+c = Community.create(name: 'sample_community_1', description: 'test community')
+c2 = Community.create(name: 'Sample-community-2', description: 'second test community')
+
+u.memberships.create(community: c)
+u.memberships.create(community: c2)
+c2.memberships.create(user: u2)
+
 
 d = Dataset.new(user: u, community: c, name: 'test dataset', documentation: 'nothing to see here')
 File.open('test.csv') do |f|
