@@ -3,22 +3,18 @@
 
     <h2 class="ui header">Create a Community</h2>
     <div class="ui divider"></div>
-    <form action="post" class="ui form">
-    <%= form_for @dataset, html: { class: 'ui form' } do |f| %>
+    <%= form_for @community, html: { class: 'ui form' } do |f| %>
 
         <div class="field">
             <label>Name of Community:</label>
-            <input type="text" name="name" placeholder="Name of Community">
+            <%= f.text_field :name, placeholder: 'Name of Community' %>
+
         </div>
         <div class="field">
             <label>Description:</label>
-            <textarea></textarea>
+            <%= f.text_area :description, placeholder: 'Description'%>
         </div>
-        <div class="field">
-            <label>Upload CSV File:</label>
-            <input type="file" name="csv">
-        </div>
-        <button class="ui button primary">Submit Data</button>
+        <%= f.submit "Create Community", class: "ui button primary" %>
+
     <% end %>
-    </form>
 </div>

@@ -33,6 +33,7 @@
                 <img class="ui avatar image" src="https://api.adorable.io/avatars/285/user.png">
                 <span> <%= current_user.name %> <i class="icon down angle down"></i></span>
                 <div class="menu">
+                <%= link_to('Profile', show_profile_path, class: 'item') %>  
                 <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item', id: 'logout_button') %>  
                 </div>
             </div>

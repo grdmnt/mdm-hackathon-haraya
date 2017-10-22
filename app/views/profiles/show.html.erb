@@ -1,0 +1,23 @@
+<div class="ui image tiny circular"><img src="https://api.adorable.io/avatars/285/user.png" alt=""></div>
+<h2 class="ui header"><%= current_user.name %> <span><i class="icon check circle green"></i></span> 
+    <div class="sub header"><%= current_user.email %></div>
+</h2>
+<div class="ui divider"></div>
+
+<h3 class="ui header">Occupation: </h3> <span>Professor in UP Diliman</span>
+<h3 class="ui header">Field of Interests: </h3><span>Networks and Distributed Systems</span>
+<h3 class="ui header">Educational Background: </h3><span>PhD in Memes Creation Major in Dank Memes</span>
+
+<h2 class="ui header">List of Datasets Contributed</h3>
+<div class="ui divider"></div>
+<% current_user.datasets.each do |dataset| %>
+<%= link_to dataset, :class => 'ui card fluid' do %>
+    <div class="content">
+        <div href='#' class="header"><%= dataset.name %></div>
+        <div class="meta">by <%= dataset.user.name %></div>
+        <div class="description">
+            <%= dataset.documentation %>
+        </div>
+    </div>
+<%end %>
+<% end %>

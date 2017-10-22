@@ -18,7 +18,7 @@
     <%= link_to @dataset.datafile.url, :class => 'ui button green mini' do %>
     <i class="icon download"></i> Download CSV File
     <% end %>
-    <% if current_user.datasets.include?(@dataset) %>
+    <% if user_signed_in? and current_user.datasets.include?(@dataset) %>
     <%= link_to edit_dataset_path(@dataset), :class => 'ui button blue mini' do %>
     <i class="icon write"></i> Update Dataset
     <% end %>

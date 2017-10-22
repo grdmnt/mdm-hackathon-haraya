@@ -4,4 +4,4 @@
     <%= link_to(community.name, community, class: 'item') %>  
     <% end %>
 </div>
-<button class="ui button primary tiny">Create a community</button>
+<%= link_to 'Create a community', new_community_path, class: 'ui button primary tiny'%>

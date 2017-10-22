@@ -3,90 +3,54 @@
         <div class="column">
             <h2 class="ui header">Explore</h2>
         </div>
-        <div class="column right aligned">
-            <div class="ui search large">
-                <div class="ui icon input">
-                    <input class="prompt" type="text" placeholder="Communities/Datasets">
-                    <i class="search icon"></i>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="sixteen wide column">
-            <div class="ui card link fluid">
+            <%= link_to @entries.first, :class => 'ui card fluid' do %>
                 <div class="content">
-			    	<a href='#' class="header">
-                        <span class="ui tiny label category">DATASET</span> 
-                        Epidemiology of the Philippine Barangays
-                    </a> 
-			    	<div class="meta">by Je Marie Apolinario and Camille Razal</div>
+			    	<div href='#' class="header">
+                        <span class="ui tiny label category"><% if @entries.first.class == Community.new.class %>COMMUNITY <% else %> DATASET <%end%></span> 
+                        <%= @entries.first.name %>
+                    </div> 
+                    <% if @entries.first.class == Dataset.new.class %>
+			    	<div class="meta">by <%= @entries.first.user.name %></div>
+                    <%end%>
 			    	<div class="description">
-			        	This contains the epidemiology of the Philippine Barangays from years 2000-2015. This dataset is used for a Web Science undergraduate thesis using Quantum Geographical Information Systems for spatial data analysis.
+                        <% if @entries.first.class == Dataset.new.class %> <%= @entries.first.documentation %> <% else %> <%= @entries.first.description%> <%end%>
 			    	</div>
                     
+                    <% if @entries.first.class == Dataset.new.class %>
                     <div class="tiny blue right floated ui label">
-                        Web Science Group
+                        <%= @entries.first.community.name %>
                     </div>
+                    <%end%>
                 </div>
-            </div>
+            <% end %>
             <div class="ui cards two link">
-                <div class="card">
+                <% @entries[1..-1].each do |entry| %>
+                <%= link_to entry, :class => 'card' do %>
+                
                     <div class="content">
-                    <a href='#' class="header">
-                        <span class="ui tiny label category">COMMUNITY</span> 
-                        transparency-ph
-                    </a> 
-                        <div class="description">
-                            This contains the epidemiology of the Philippine Barangays from years 2000-2015. This dataset is used for a Web Science undergraduate thesis using Quantum Geographical Information Systems for spatial data analysis.
-                        </div>
+			    	<div href='#' class="header">
+                        <span class="ui tiny label category"><% if entry.class == Community.new.class %>COMMUNITY <% else %> DATASET <%end%></span> 
+                        <%= entry.name %>
+                    </div> 
+                    <% if entry.class == Dataset.new.class %>
+			    	<div class="meta">by <%= entry.user.name %></div>
+                    <%end%>
+			    	<div class="description">
+                        <% if entry.class == Dataset.new.class %> <%= entry.documentation %> <% else %> <%= entry.description%> <%end%>
+			    	</div>
+                    
+                    <% if entry.class == Dataset.new.class %>
+                    <div class="tiny blue right floated ui label">
+                        <%= entry.community.name %>
                     </div>
+                    <%end%>
                 </div>
-                <div class="card">
-                    <div class="content">
-                        <a href='#' class="header">
-                        <span class="ui tiny label category">DATASET</span> 
-                        Epidemiology of the Philippine Barangays
-                    </a> 
-                        <div class="meta">by Je Marie Apolinario and Camille Razal</div>
-                        <div class="description">
-                            This contains the epidemiology of the Philippine Barangays from years 2000-2015. This dataset is used for a Web Science undergraduate thesis using Quantum Geographical Information Systems for spatial data analysis.
-                        </div><br>
-                        <div class="tiny blue ui label">
-                        Web Science Group
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <a href='#' class="header">
-                        <span class="ui tiny label category">DATASET</span> 
-                        Epidemiology of the Philippine Barangays
-                    </a> 
-                        <div class="meta">by Je Marie Apolinario and Camille Razal</div>
-                        <div class="description">
-                            This contains the epidemiology of the Philippine Barangays from years 2000-2015. This dataset is used for a Web Science undergraduate thesis using Quantum Geographical Information Systems for spatial data analysis.
-                        </div>
-                        <div class="tiny blue right floated ui label">
-                        Web Science Group
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <a href='#' class="header">
-                        <span class="ui tiny label category">DATASET</span> 
-                        Epidemiology of the Philippine Barangays
-                    </a> 
-                        <div class="meta">by Je Marie Apolinario and Camille Razal</div>
-                        <div class="description">
-                            This contains the epidemiology of the Philippine Barangays from years 2000-2015. This dataset is used for a Web Science undergraduate thesis using Quantum Geographical Information Systems for spatial data analysis.
-                        </div>
-                        <div class="tiny blue right floated ui label">
-                        Web Science Group
-                    </div>
-                    </div>
-                </div>
+                <%end%>
+                <% end %>
+               
             </div>
         </div>
     </div>

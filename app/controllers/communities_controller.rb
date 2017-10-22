@@ -14,6 +14,12 @@ class CommunitiesController < ApplicationController
   def new
     @community = Community.new
   end
+
+  def join
+    @community = Community.find_by(name: params[:identifier])
+    current_user.memberships.create(community: @community)
+    redirect_to @community
+  end
  
   def edit
     @community = Community.find_by(name: params[:identifier])
@@ -23,7 +29,7 @@ class CommunitiesController < ApplicationController
     @community = Community.new(community_params)
 
     if current_user
-      @community.user = current_user
+      current_user.memberships.create(community: @community)
     else
       render redirect_to '/users/sign_in'
     end

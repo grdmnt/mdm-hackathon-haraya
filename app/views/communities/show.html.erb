@@ -1,7 +1,12 @@
 <div class="ui grid" id="community-page">
     <div class="row">
         <div class="sixteen wide column">
-            <h5 class="ui header"><%= @community.name %></h5>
+            
+            <h5 class="ui header"><%= @community.name %>
+                <% if user_signed_in? and not current_user.communities.include?(@community) %>
+                <%= link_to '+ Join Community', join_community_path, class: 'ui label tiny blue'%>
+                <%end%>
+            </h5>
             <div class="ui divider"></div>
             <div class="ui message">
                 <%= @community.description %>

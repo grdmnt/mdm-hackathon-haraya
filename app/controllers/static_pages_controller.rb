@@ -3,7 +3,12 @@ class StaticPagesController < ApplicationController
   end
 
   def explore
-    @communities = ['transparencyPH', 'agriculture', 'medical-missions']
+    @user = User.new
+    @communities = Community.all
+    @datasets = Dataset.all
+
+    @entries = @communities + @datasets
+    @entries.shuffle!
   end
 
   def dataset
